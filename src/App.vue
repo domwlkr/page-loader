@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <!-- Loading comp sits at the app level so that it sits over all page layout -->
+    <!-- You can also have it in the base page layout if you are using one -->
+    <PageLoader />
+
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
@@ -7,11 +11,13 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import PageLoader from './components/PageLoader.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    PageLoader
   }
 }
 </script>

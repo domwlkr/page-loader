@@ -32,10 +32,33 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  created () {
+    // On create load you resource
+    this.loadResource()
+
+    // You could have a bunch more if your view uses different endpoints
+    // this.loadAnotherResource()
+    // this.loadSomethingElse()
+  },
+  methods: {
+    loadResource () {
+      // Call loading which adds 1 to the loading state in the store
+      this.LOADING()
+
+      setTimeout(() => {
+        // Call loaded which minuses 1 from the loading state in the store
+        this.LOADED()
+      }, 1500)
+    },
+    // These are the loading and loaded actions mapped from the store
+    ...mapActions('loader', ['LOADING', 'LOADED'])
   }
 }
 </script>
